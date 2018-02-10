@@ -30,8 +30,21 @@ console.log(mh.scryptn(headerBuffer, 20));
 console.log("Testing Skein");
 console.log(mh.skein(Buffer.from('1234test1234test1234test1234dasd')));
 
+console.log("Testing Skein");
+console.log(mh.skein(Buffer.alloc(80)));
+
 console.log("Testing Groestl");
 console.log(mh.groestl(Buffer.from('1234test1234test1234test1234dasd')));
+
+console.log("Testing allium");
+console.log(mh.allium(Buffer.alloc(80)));
+console.log(mh.allium(Buffer.from('1234test1234test1234test1234dasd')));
+
+// console.log("Testing lyra2");
+// console.log(mh.lyra2(Buffer.alloc(80)));
+
+console.log("Testing blake2s");
+console.log(mh.blake2s(Buffer.alloc(80)));
 
 // More test to follow when I work on fixing the rest
 //testing a webhook

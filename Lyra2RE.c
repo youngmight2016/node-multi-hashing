@@ -78,7 +78,7 @@ void lyra2re2_hash(const char* input, char* output)
 	sph_skein256_context ctx_skein;
 	sph_bmw256_context ctx_bmw;
 
-	uint32_t hashA[8], hashB[8];
+	uint32_t hashA[8], hashB[8]; // 256 bytes
 
 	sph_blake256_init(&ctx_blake);
     sph_blake256(&ctx_blake, input, 80);
