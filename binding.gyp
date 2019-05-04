@@ -30,6 +30,7 @@
                 "magimath.c",
                 "neoscrypt.c",
                 "nist5.c",
+                "odo.cc",
                 "phi1612.c",
                 "quark.c",
                 "qubit.c",
@@ -47,10 +48,12 @@
                 "x11.c",
                 "x13.c",
                 "x15.c",
+                "x16r.c",
                 "xevan.c",
                 "zr5.c",
                 "sha3/aes_helper.c",
                 "sha3/hamsi.c",
+                "sha3/KeccakP-800-reference.c",
                 "sha3/sph_haval.c",
                 "sha3/sph_hefty1.c",
                 "sha3/sph_fugue.c",
@@ -90,6 +93,7 @@
                 "crypto/c_skein.c",
                 "crypto/hash.c",
                 "crypto/oaes_lib.c",
+                "crypto/odocrypt.cpp",
                 "crypto/wild_keccak.cpp"
             ],
             'conditions': [

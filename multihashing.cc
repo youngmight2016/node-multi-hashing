@@ -42,6 +42,7 @@ extern "C" {
     #include "x11.h"
     #include "x13.h"
     #include "x15.h"
+    #include "x16r.h"
     #include "xevan.h"
     #include "yescrypt/yescrypt.h"
     #include "yescrypt/sha256_Y.h"
@@ -49,6 +50,7 @@ extern "C" {
 }
 
 #include "boolberry.h"
+#include "odo.h"
 
 using namespace node;
 using namespace v8;
@@ -166,6 +168,7 @@ using namespace v8;
  DECLARE_CALLBACK(x11, x11_hash, 32);
  DECLARE_CALLBACK(x13, x13_hash, 32);
  DECLARE_CALLBACK(x15, x15_hash, 32);
+ DECLARE_CALLBACK(x16r, x16r_hash, 32);
  DECLARE_CALLBACK(xevan, xevan_hash, 32);
 
  DECLARE_NO_INPUT_LENGTH_CALLBACK(allium, allium_hash, 32);
@@ -414,6 +417,29 @@ DECLARE_FUNC(skunk) {
    SET_BUFFER_RETURN(output, 32);
 }
 
+DECLARE_FUNC(odo) {
+   DECLARE_SCOPE;
+
+   if (args.Length() < 2)
+       RETURN_EXCEPT("You must provide buffer to hash and key value");
+
+   Local<Object> target = args[0]->ToObject();
+
+   if(!Buffer::HasInstance(target))
+       RETURN_EXCEPT("Argument should be a buffer object.");
+
+   unsigned int keyValue = args[1]->Uint32Value();
+
+   char * input = Buffer::Data(target);
+   char output[32];
+
+   uint32_t input_len = Buffer::Length(target);
+
+   odo_hash(input, output, input_len, keyValue);
+
+   SET_BUFFER_RETURN(output, 32);
+}
+
 DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "allium", allium);
     NODE_SET_METHOD(exports, "bcrypt", bcrypt);
@@ -440,6 +466,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "m7m", m7m);
     NODE_SET_METHOD(exports, "neoscrypt", neoscrypt);
     NODE_SET_METHOD(exports, "nist5", nist5);
+    NODE_SET_METHOD(exports, "odo", odo);
     NODE_SET_METHOD(exports, "phi1612", phi1612);
     NODE_SET_METHOD(exports, "quark", quark);
     NODE_SET_METHOD(exports, "qubit", qubit);
@@ -455,6 +482,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "x11", x11);
     NODE_SET_METHOD(exports, "x13", x13);
     NODE_SET_METHOD(exports, "x15", x15);
+    NODE_SET_METHOD(exports, "x16r", x16r);
     NODE_SET_METHOD(exports, "xevan", xevan);
     NODE_SET_METHOD(exports, "yescrypt", yescrypt);
 }
