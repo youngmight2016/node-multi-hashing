@@ -1,5 +1,3 @@
-// #include "allium.h"
-// #include "sha3/sph_blake.h"
 #include "Lyra2.h"
 
 #include "blake2s.h"
@@ -14,7 +12,6 @@
 #include "sha3/sph_keccak.h"
 #include "sha3/sph_skein.h"
 #include "sha3/sph_luffa.h"
-// #define _ALIGN(x) __attribute__ ((aligned(x)))
 
 #define CL_N    "\x1B[0m"
 #define CL_CYN  "\x1B[36m"
@@ -42,8 +39,6 @@ void allium_hash(const char* input, char* state)
     sph_groestl256_context   ctx_groestl;
     sph_cubehash256_context  ctx_cube;
 
-    // sph_blake256_set_rounds(14);
-
     sph_blake256_init(&ctx_blake);
     sph_blake256(&ctx_blake, input, 80);
     sph_blake256_close(&ctx_blake, hashA);
@@ -70,19 +65,3 @@ void allium_hash(const char* input, char* state)
 
     memcpy(state, hashA, 32);
 }
-
-// #include "blake2s.h"
-// #include <stdlib.h>
-// #include <stdint.h>
-// #include <string.h>
-// #include <stdio.h>
-
-// #include "sha3/sph_blake2s.h"
-
-// void allium_hash(const char* input, char* output)
-// // {
-//     blake2s_state ctx_blake2s;
-//     blake2s_init(&ctx_blake2s, BLAKE2S_OUTBYTES);
-//     blake2s_update(&ctx_blake2s, input, 80);
-//     blake2s_final(&ctx_blake2s, output, BLAKE2S_OUTBYTES);
-// }

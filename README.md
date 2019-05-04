@@ -1,3 +1,9 @@
+## This repo is looking for maintainers! Please reach out if interested.
+
+--------
+
+
+
 node-multi-hashing
 ===============
 
@@ -28,6 +34,8 @@ Algorithms
 * shavite3
 * cryptonight
 * boolberry
+* sha256d
+* lbry
 
 Usage
 -----
