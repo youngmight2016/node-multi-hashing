@@ -22,6 +22,7 @@ extern "C" {
     #include "Lyra2.h"
     #include "Lyra2RE.h"
     #include "Lyra2REV2.h"
+    #include "Lyra2REV3.h"
     #include "Lyra2Z.h"
     #include "lyra2z16m330.h"
     #include "lyra2z330.h"
@@ -175,6 +176,7 @@ using namespace v8;
  DECLARE_NO_INPUT_LENGTH_CALLBACK(bcrypt, bcrypt_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(blake2s, blake2s_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2rev2, lyra2rev2_hash, 32);
+ DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2rev3, lyra2rev3_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2z, lyra2z_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(m7, m7_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(m7m, m7m_hash, 32);
@@ -459,6 +461,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "keccak", keccak);
     NODE_SET_METHOD(exports, "lbry", lbry);
     NODE_SET_METHOD(exports, "lyra2rev2", lyra2rev2);
+    NODE_SET_METHOD(exports, "lyra2rev3", lyra2rev3);
     NODE_SET_METHOD(exports, "lyra2z", lyra2z);
     NODE_SET_METHOD(exports, "lyra2z16m330", lyra2z16m330);
     NODE_SET_METHOD(exports, "lyra2z330", lyra2z330);

@@ -23,6 +23,7 @@
                 "Lyra2.c",
                 "Lyra2RE.c",
                 "Lyra2REV2.c",
+                "Lyra2REV3.c",
                 "Lyra2Z.c",
                 "lyra2z16m330.c",
                 "lyra2z330.c",
