@@ -44,6 +44,7 @@ extern "C" {
     #include "x13.h"
     #include "x15.h"
     #include "x16r.h"
+    #include "x17.h"
     #include "xevan.h"
     #include "yescrypt/yescrypt.h"
     #include "yescrypt/sha256_Y.h"
@@ -218,11 +219,13 @@ using namespace v8;
  DECLARE_CALLBACK(x13, x13_hash, 32);
  DECLARE_CALLBACK(x15, x15_hash, 32);
  DECLARE_CALLBACK(x16r, x16r_hash, 32);
+ DECLARE_CALLBACK(x17, x17_hash, 32);
  DECLARE_CALLBACK(xevan, xevan_hash, 32);
 
  DECLARE_NO_INPUT_LENGTH_CALLBACK(allium, allium_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(bcrypt, bcrypt_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(blake2s, blake2s_hash, 32);
+ DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2re2, lyra2re2_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2rev2, lyra2rev2_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2rev3, lyra2rev3_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2z, lyra2z_hash, 32);
@@ -601,6 +604,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "hsr", hsr);
     NODE_SET_METHOD(exports, "keccak", keccak);
     NODE_SET_METHOD(exports, "lbry", lbry);
+    NODE_SET_METHOD(exports, "lyra2re2", lyra2re2);
     NODE_SET_METHOD(exports, "lyra2rev2", lyra2rev2);
     NODE_SET_METHOD(exports, "lyra2rev3", lyra2rev3);
     NODE_SET_METHOD(exports, "lyra2z", lyra2z);
@@ -627,6 +631,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "x13", x13);
     NODE_SET_METHOD(exports, "x15", x15);
     NODE_SET_METHOD(exports, "x16r", x16r);
+    NODE_SET_METHOD(exports, "x17", x17);
     NODE_SET_METHOD(exports, "xevan", xevan);
     NODE_SET_METHOD(exports, "yescrypt", yescrypt);
 }
