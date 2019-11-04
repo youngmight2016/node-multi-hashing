@@ -196,6 +196,7 @@ using namespace v8;
 #endif // NODE_MAJOR_VERSION >= 12
 
  DECLARE_CALLBACK(blake, blake_hash, 32);
+ DECLARE_CALLBACK(blake2s, blake2s_hash, 32);
  DECLARE_CALLBACK(c11, c11_hash, 32);
  DECLARE_CALLBACK(fresh, fresh_hash, 32);
  DECLARE_CALLBACK(fugue, fugue_hash, 32);
@@ -224,7 +225,6 @@ using namespace v8;
 
  DECLARE_NO_INPUT_LENGTH_CALLBACK(allium, allium_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(bcrypt, bcrypt_hash, 32);
- DECLARE_NO_INPUT_LENGTH_CALLBACK(blake2s, blake2s_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2re2, lyra2re2_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2rev2, lyra2rev2_hash, 32);
  DECLARE_NO_INPUT_LENGTH_CALLBACK(lyra2rev3, lyra2rev3_hash, 32);
