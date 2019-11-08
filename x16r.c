@@ -222,7 +222,7 @@ void x16rv2_hash(const char* input, char* output, uint32_t len)
 	sph_shabal512_context    ctx_shabal;
 	sph_whirlpool_context    ctx_whirlpool;
 	sph_sha512_context       ctx_sha512;
-	sph_tiger_context       ctx_tiger;
+	sph_tiger_context        ctx_tiger;
 
 	void *in = (void*) input;
 	int size = len;
@@ -257,9 +257,9 @@ void x16rv2_hash(const char* input, char* output, uint32_t len)
 			sph_jh512_close(&ctx_jh, hash);
 			break;
 		case V2_TIGER_KECCAK:
-			sph_tiger_init(&ctx_keccak);
-			sph_tiger(&ctx_keccak, in, size);
-			sph_tiger_close(&ctx_keccak, hash);
+			sph_tiger_init(&ctx_tiger);
+			sph_tiger(&ctx_tiger, in, size);
+			sph_tiger_close(&ctx_tiger, hash);
 
 			sph_keccak512_init(&ctx_keccak);
 			sph_keccak512(&ctx_keccak, hash, 64);
@@ -271,9 +271,9 @@ void x16rv2_hash(const char* input, char* output, uint32_t len)
 			sph_skein512_close(&ctx_skein, hash);
 			break;
 		case V2_TIGER_LUFFA:
-			sph_tiger_init(&ctx_keccak);
-			sph_tiger(&ctx_keccak, in, size);
-			sph_tiger_close(&ctx_keccak, hash);
+			sph_tiger_init(&ctx_tiger);
+			sph_tiger(&ctx_tiger, in, size);
+			sph_tiger_close(&ctx_tiger, hash);
 
 			sph_luffa512_init(&ctx_luffa);
 			sph_luffa512(&ctx_luffa, hash, 64);
@@ -320,9 +320,9 @@ void x16rv2_hash(const char* input, char* output, uint32_t len)
 			sph_whirlpool_close(&ctx_whirlpool, hash);
 			break;
 		case V2_TIGER_SHA512:
-			sph_tiger_init(&ctx_keccak);
-			sph_tiger(&ctx_keccak, in, size);
-			sph_tiger_close(&ctx_keccak, hash);
+			sph_tiger_init(&ctx_tiger);
+			sph_tiger(&ctx_tiger, in, size);
+			sph_tiger_close(&ctx_tiger, hash);
 
 			sph_sha512_init(&ctx_sha512);
 			sph_sha512(&ctx_sha512,(const void*) hash, 64);
