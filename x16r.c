@@ -236,27 +236,27 @@ void x16rv2_hash(const char* input, char* output, uint32_t len)
 		const uint8_t algo = elem >= 'A' ? elem - 'A' + 10 : elem - '0';
 
 		switch (algo) {
-		case BLAKE:
+		case V2_BLAKE:
 			sph_blake512_init(&ctx_blake);
 			sph_blake512(&ctx_blake, in, size);
 			sph_blake512_close(&ctx_blake, hash);
 			break;
-		case BMW:
+		case V2_BMW:
 			sph_bmw512_init(&ctx_bmw);
 			sph_bmw512(&ctx_bmw, in, size);
 			sph_bmw512_close(&ctx_bmw, hash);
 			break;
-		case GROESTL:
+		case V2_GROESTL:
 			sph_groestl512_init(&ctx_groestl);
 			sph_groestl512(&ctx_groestl, in, size);
 			sph_groestl512_close(&ctx_groestl, hash);
 			break;
-		case JH:
+		case V2_JH:
 			sph_jh512_init(&ctx_jh);
 			sph_jh512(&ctx_jh, in, size);
 			sph_jh512_close(&ctx_jh, hash);
 			break;
-		case KECCAK:
+		case V2_TIGER_KECCAK:
 			sph_tiger_init(&ctx_keccak);
 			sph_tiger(&ctx_keccak, in, size);
 			sph_tiger_close(&ctx_keccak, hash);
@@ -265,12 +265,12 @@ void x16rv2_hash(const char* input, char* output, uint32_t len)
 			sph_keccak512(&ctx_keccak, hash, 64);
 			sph_keccak512_close(&ctx_keccak, hash);
 			break;
-		case SKEIN:
+		case V2_SKEIN:
 			sph_skein512_init(&ctx_skein);
 			sph_skein512(&ctx_skein, in, size);
 			sph_skein512_close(&ctx_skein, hash);
 			break;
-		case LUFFA:
+		case V2_TIGER_LUFFA:
 			sph_tiger_init(&ctx_keccak);
 			sph_tiger(&ctx_keccak, in, size);
 			sph_tiger_close(&ctx_keccak, hash);
@@ -279,47 +279,47 @@ void x16rv2_hash(const char* input, char* output, uint32_t len)
 			sph_luffa512(&ctx_luffa, hash, 64);
 			sph_luffa512_close(&ctx_luffa, hash);
 			break;
-		case CUBEHASH:
+		case V2_CUBEHASH:
 			sph_cubehash512_init(&ctx_cubehash);
 			sph_cubehash512(&ctx_cubehash, in, size);
 			sph_cubehash512_close(&ctx_cubehash, hash);
 			break;
-		case SHAVITE:
+		case V2_SHAVITE:
 			sph_shavite512_init(&ctx_shavite);
 			sph_shavite512(&ctx_shavite, in, size);
 			sph_shavite512_close(&ctx_shavite, hash);
 			break;
-		case SIMD:
+		case V2_SIMD:
 			sph_simd512_init(&ctx_simd);
 			sph_simd512(&ctx_simd, in, size);
 			sph_simd512_close(&ctx_simd, hash);
 			break;
-		case ECHO:
+		case V2_ECHO:
 			sph_echo512_init(&ctx_echo);
 			sph_echo512(&ctx_echo, in, size);
 			sph_echo512_close(&ctx_echo, hash);
 			break;
-		case HAMSI:
+		case V2_HAMSI:
 			sph_hamsi512_init(&ctx_hamsi);
 			sph_hamsi512(&ctx_hamsi, in, size);
 			sph_hamsi512_close(&ctx_hamsi, hash);
 			break;
-		case FUGUE:
+		case V2_FUGUE:
 			sph_fugue512_init(&ctx_fugue);
 			sph_fugue512(&ctx_fugue, in, size);
 			sph_fugue512_close(&ctx_fugue, hash);
 			break;
-		case SHABAL:
+		case V2_SHABAL:
 			sph_shabal512_init(&ctx_shabal);
 			sph_shabal512(&ctx_shabal, in, size);
 			sph_shabal512_close(&ctx_shabal, hash);
 			break;
-		case WHIRLPOOL:
+		case V2_WHIRLPOOL:
 			sph_whirlpool_init(&ctx_whirlpool);
 			sph_whirlpool(&ctx_whirlpool, in, size);
 			sph_whirlpool_close(&ctx_whirlpool, hash);
 			break;
-		case SHA512:
+		case V2_TIGER_SHA512:
 			sph_tiger_init(&ctx_keccak);
 			sph_tiger(&ctx_keccak, in, size);
 			sph_tiger_close(&ctx_keccak, hash);
