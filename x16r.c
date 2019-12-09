@@ -63,12 +63,12 @@ enum AlgoV2 {
 	V2_HASH_FUNC_COUNT
 };
 
-static void getAlgoString(const uint8_t* prevblock, char *output)
+static void getAlgoString(const uint8_t* prevblock, char *output, int hashFuncCount)
 {
 	char *sptr = output;
 	int j;
 
-	for (j = 0; j < HASH_FUNC_COUNT; j++) {
+	for (j = 0; j < hashFuncCount; j++) {
 		char b = (15 - j) >> 1; // 16 ascii hex chars, reversed
 		uint8_t algoDigit = (j & 1) ? prevblock[b] & 0xF : prevblock[b] >> 4;
 		if (algoDigit >= 10)
@@ -106,7 +106,7 @@ void x16r_hash(const char* input, char* output, uint32_t len)
 	int size = len;
     int i;
 
-	getAlgoString(&input[4], hashOrder);
+	getAlgoString(&input[4], hashOrder, HASH_FUNC_COUNT);
 
 	for (i = 0; i < 16; i++)
 	{
@@ -204,7 +204,7 @@ void x16r_hash(const char* input, char* output, uint32_t len)
 void x16rv2_hash(const char* input, char* output, uint32_t len)
 {
 	uint32_t hash[64/4];
-	char hashOrder[HASH_FUNC_COUNT + 1] = { 0 };
+	char hashOrder[V2_HASH_FUNC_COUNT + 1] = { 0 };
 
 	sph_blake512_context     ctx_blake;
 	sph_bmw512_context       ctx_bmw;
@@ -227,8 +227,9 @@ void x16rv2_hash(const char* input, char* output, uint32_t len)
 	void *in = (void*) input;
 	int size = len;
     int i;
+	int j;
 
-	getAlgoString(&input[4], hashOrder);
+	getAlgoString(&input[4], hashOrder, V2_HASH_FUNC_COUNT);
 
 	for (i = 0; i < 16; i++)
 	{
@@ -260,6 +261,9 @@ void x16rv2_hash(const char* input, char* output, uint32_t len)
 			sph_tiger_init(&ctx_tiger);
 			sph_tiger(&ctx_tiger, in, size);
 			sph_tiger_close(&ctx_tiger, hash);
+			for (j = 24; j < 64; ++j) {
+				((uint8_t*)hash)[j] = 0; // Pad the 24 bytes to bring it to 64 bytes
+			}
 
 			sph_keccak512_init(&ctx_keccak);
 			sph_keccak512(&ctx_keccak, hash, 64);
@@ -274,6 +278,9 @@ void x16rv2_hash(const char* input, char* output, uint32_t len)
 			sph_tiger_init(&ctx_tiger);
 			sph_tiger(&ctx_tiger, in, size);
 			sph_tiger_close(&ctx_tiger, hash);
+			for (j = 24; j < 64; ++j) {
+				((uint8_t*)hash)[j] = 0; // Pad the 24 bytes to bring it to 64 bytes
+			}
 
 			sph_luffa512_init(&ctx_luffa);
 			sph_luffa512(&ctx_luffa, hash, 64);
@@ -323,6 +330,9 @@ void x16rv2_hash(const char* input, char* output, uint32_t len)
 			sph_tiger_init(&ctx_tiger);
 			sph_tiger(&ctx_tiger, in, size);
 			sph_tiger_close(&ctx_tiger, hash);
+			for (j = 24; j < 64; ++j) {
+				((uint8_t*)hash)[j] = 0; // Pad the 24 bytes to bring it to 64 bytes
+			}
 
 			sph_sha512_init(&ctx_sha512);
 			sph_sha512(&ctx_sha512,(const void*) hash, 64);
