@@ -28,6 +28,8 @@ extern "C" {
     #include "lyra2z330.h"
     #include "m7.h"
     #include "magimath.h"
+    #include "minotaur.h"
+    #include "neoscrypt.h"
     #include "nist5.h"
     #include "phi1612.h"
     #include "quark.h"
@@ -48,7 +50,6 @@ extern "C" {
     #include "xevan.h"
     #include "yescrypt/yescrypt.h"
     #include "yescrypt/sha256_Y.h"
-    #include "neoscrypt.h"
 }
 
 #include "boolberry.h"
@@ -209,6 +210,7 @@ using namespace v8;
  DECLARE_CALLBACK(lbry, lbry_hash, 32);
  DECLARE_CALLBACK(lyra2z16m330, lyra2z16m330_hash, 32);
  DECLARE_CALLBACK(lyra2z330, lyra2z330_hash, 32);
+ DECLARE_CALLBACK(minotaur, minotaur_hash, 32);
  DECLARE_CALLBACK(nist5, nist5_hash, 32);
  DECLARE_CALLBACK(quark, quark_hash, 32);
  DECLARE_CALLBACK(qubit, qubit_hash, 32);
@@ -613,6 +615,7 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "lyra2z330", lyra2z330);
     NODE_SET_METHOD(exports, "m7", m7);
     NODE_SET_METHOD(exports, "m7m", m7m);
+    NODE_SET_METHOD(exports, "minotaur", minotaur);
     NODE_SET_METHOD(exports, "neoscrypt", neoscrypt);
     NODE_SET_METHOD(exports, "nist5", nist5);
     NODE_SET_METHOD(exports, "odo", odo);
@@ -639,3 +642,4 @@ DECLARE_INIT(init) {
 }
 
 NODE_MODULE(multihashing, init)
+

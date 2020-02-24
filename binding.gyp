@@ -29,6 +29,7 @@
                 "lyra2z330.c",
                 "m7.c",
                 "magimath.c",
+                "minotaur.c",
                 "neoscrypt.c",
                 "nist5.c",
                 "odo.cc",
