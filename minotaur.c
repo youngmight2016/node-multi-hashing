@@ -1,12 +1,6 @@
 // Minotaur hash
 
 #include "minotaur.h"
-
-#include <stdlib.h>
-#include <stdint.h>
-#include <string.h>
-#include <stdio.h>
-
 #include "sha3/sph_blake.h"
 #include "sha3/sph_bmw.h"
 #include "sha3/sph_groestl.h"
@@ -23,6 +17,12 @@
 #include "sha3/sph_shabal.h"
 #include "sha3/sph_whirlpool.h"
 #include "sha3/sph_sha2.h"
+#include <stdlib.h>
+#include <stdint.h>
+#include <string.h>
+#include <stdio.h>
+
+
 
 // Config
 #define MINOTAUR_ALGO_COUNT	16
