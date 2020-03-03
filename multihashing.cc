@@ -613,7 +613,6 @@ DECLARE_INIT(init) {
     NODE_SET_METHOD(exports, "lyra2z330", lyra2z330);
     NODE_SET_METHOD(exports, "m7", m7);
     NODE_SET_METHOD(exports, "m7m", m7m);
-    NODE_SET_METHOD(exports, "minotaur", minotaur);
     NODE_SET_METHOD(exports, "neoscrypt", neoscrypt);
     NODE_SET_METHOD(exports, "nist5", nist5);
     NODE_SET_METHOD(exports, "odo", odo);
