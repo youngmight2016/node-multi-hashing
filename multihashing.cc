@@ -209,7 +209,6 @@ using namespace v8;
  DECLARE_CALLBACK(lbry, lbry_hash, 32);
  DECLARE_CALLBACK(lyra2z16m330, lyra2z16m330_hash, 32);
  DECLARE_CALLBACK(lyra2z330, lyra2z330_hash, 32);
- DECLARE_CALLBACK(minotaur, minotaur_hash, 32);
  DECLARE_CALLBACK(nist5, nist5_hash, 32);
  DECLARE_CALLBACK(quark, quark_hash, 32);
  DECLARE_CALLBACK(qubit, qubit_hash, 32);
