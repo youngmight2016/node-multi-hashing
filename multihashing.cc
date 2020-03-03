@@ -28,7 +28,6 @@ extern "C" {
     #include "lyra2z330.h"
     #include "m7.h"
     #include "magimath.h"
-    #include "minotaur.h"
     #include "neoscrypt.h"
     #include "nist5.h"
     #include "phi1612.h"
